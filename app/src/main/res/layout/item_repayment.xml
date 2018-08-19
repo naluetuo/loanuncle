@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/qb_px_290"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/qb_px_15"
+        android:paddingBottom="@dimen/qb_px_15">
+
+        <LinearLayout
+            android:id="@+id/item_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/qb_px_75"
+            android:layout_marginRight="@dimen/qb_px_46"
+            android:background="@drawable/round_repayment"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/qb_px_18"
+                android:layout_marginTop="@dimen/qb_px_20"
+                android:layout_marginBottom="@dimen/qb_px_10"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/qb_px_40"
+                    android:layout_height="@dimen/qb_px_40"
+                    android:background="@drawable/circular"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/qb_px_24"
+                        android:layout_height="@dimen/qb_px_24"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/loan_img"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/platform_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/business_name_example"
+                    android:textSize="@dimen/sp_15"
+                    android:textColor="@color/login_button"
+                    android:layout_marginLeft="@dimen/qb_px_22"/>
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/user_name_example"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@color/login_button"
+                    android:layout_marginLeft="@dimen/qb_px_21"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/qb_px_16"
+                android:layout_marginRight="@dimen/qb_px_21"
+                android:background="@color/strip_background"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/qb_px_20"
+                android:layout_marginRight="@dimen/qb_px_20">
+
+                <TextView
+                    android:id="@+id/pay_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/day_count_example"
+                    android:textSize="@dimen/sp_30"
+                    android:textColor="@color/login_button"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/pay_time"
+                    android:text="@string/pay_limit"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@color/login_button"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/qb_px_25"/>
+
+                <TextView
+                    android:id="@+id/makesure_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_paysure"
+                    android:paddingLeft="@dimen/qb_px_14"
+                    android:paddingRight="@dimen/qb_px_14"
+                    android:paddingTop="@dimen/qb_px_8"
+                    android:paddingBottom="@dimen/qb_px_8"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pay_sure"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@color/login_button"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/qb_px_20"
+                android:layout_marginRight="@dimen/qb_px_20"
+                android:layout_marginTop="@dimen/qb_px_20">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/money_shoudpay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shoud_pay_example"
+                        android:textSize="@dimen/sp_12"
+                        android:textColor="@color/login_button"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/money_shoudpay"
+                        android:text="@string/shoud_pay_txt"
+                        android:textSize="@dimen/sp_12"
+                        android:textColor="@color/login_button"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|right"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/pay_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="4/5"
+                        android:textSize="@dimen/sp_12"
+                        android:textColor="@color/login_button"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pay_count_txt"
+                        android:textSize="@dimen/sp_12"
+                        android:textColor="@color/login_button"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_delete"
+            android:layout_width="@dimen/qb_px_94"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="@dimen/qb_px_66"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="left|center">
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_66"
+                    android:layout_height="@dimen/qb_px_66"
+                    android:src="@mipmap/delete"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/qb_px_10"
+                    android:text="删除"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@color/login_button"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

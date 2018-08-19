@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/qb_px_88"
+    android:background="@color/colorPrimaryDark"
+    app:title=""
+    android:minHeight="?attr/actionBarSize">
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/login"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/login_button"/>
+
+    <ImageView
+        android:id="@+id/right_menu"
+        android:layout_width="@dimen/qb_px_37"
+        android:layout_height="@dimen/qb_px_37"
+        android:layout_marginRight="@dimen/qb_px_61"
+        android:layout_gravity="right|center_vertical"
+        android:src="@mipmap/add"/>
+
+</android.support.v7.widget.Toolbar>

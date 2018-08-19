@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:paddingTop="@dimen/qb_px_30"
+        android:paddingBottom="@dimen/qb_px_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingRight="@dimen/qb_px_52"
+        android:paddingLeft="@dimen/qb_px_52">
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/cancle"
+            android:textColor="@color/login_button"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/sure"
+            android:textColor="@color/login_button"
+            android:textSize="@dimen/sp_14" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+         />
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.loanuncle.gm.loanuncle.view.DatePickerView
+            android:id="@+id/content_pv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_330"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

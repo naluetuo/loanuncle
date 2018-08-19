@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">LoanUncle</string>
+
+    <string name="login">登录</string>
+    <string name="login_sure">确认登录</string>
+    <string name="agreement">同意《贷大叔网络服务协议》</string>
+    <string name="phonenumber">手机号:</string>
+    <string name="verificationcode">验证码:</string>
+    <string name="getcode">获取验证码</string>
+
+    <string name="login_immediately">立即登录</string>
+    <string name="bill_complited">已完成账单</string>
+    <string name="public_number">货大叔公众号</string>
+    <string name="public_number_example">123456</string>
+    <string name="login_cancle">注销登录</string>
+    <string name="dialog_title_signout">是否退出当前账号？</string>
+    <string name="cancle">取消</string>
+    <string name="sure">确认</string>
+
+    <string name="bill_blank">还没有已完成的账单~</string>
+    <string name="already_pay">已完成该账单</string>
+    <string name="all_pay">共还款</string>
+    <string name="pay_complite_date">完成还款日期</string>
+
+    <string name="borrow_channel">*借款渠道</string>
+    <string name="platform_name">请输入平台名称</string>
+    <string name="user_name">用户名</string>
+    <string name="user_name_edt">请输入用户名</string>
+    <string name="repay_date">还款日</string>
+    <string name="repay_date_example">5日</string>
+    <string name="monthly_supply">*月供金额</string>
+    <string name="monthly_supply_edt">请输入月供金额</string>
+    <string name="allperiods_count">总期数</string>
+    <string name="allperiods_count_example">1期</string>
+    <string name="currentperiods_count">当前期数</string>
+    <string name="save">保存</string>
+
+    <string name="business_name_example">人人贷</string>
+    <string name="user_name_example">用户名</string>
+    <string name="day_count_example">05</string>
+    <string name="pay_limit">天内还款</string>
+    <string name="pay_sure">确认还款</string>
+    <string name="shoud_pay_example">500.00</string>
+    <string name="shoud_pay_txt">本期应还</string>
+    <string name="pay_count_txt">还款期数</string>
+    <string name="add_bill">添加账单</string>
+
+    <string name="bill_txt">账单</string>
+    <string name="loan_supermarket">贷一笔</string>
+    <string name="mine">我的</string>
+</resources>

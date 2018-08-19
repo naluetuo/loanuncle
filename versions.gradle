@@ -1,0 +1,54 @@
+ext.deps = [:]
+def versions = [:]
+
+versions.leakcanary = "1.5.4"
+versions.constraint_layout = "1.0.2"
+versions.appcompat_v7 = "27.1.1"
+versions.support_v4 = "27.1.1"
+versions.recyclerview_v7 = "27.1.1"
+versions.android_gradle_plugin = "3.1.0"
+versions.multidex = "1.0.3"
+versions.rxjava = "2.0.1"
+versions.eventbus = "3.0.0"
+versions.imageLoaderVersion = "1.9.5"
+versions.photoviewVersion = "1.2.4"
+versions.design = "27.1.1"
+versions.recyclerview_swipe = "1.1.4"
+versions.tablayout = "2.1.2"
+versions.fastjson = "1.1.68.android"
+versions.PhotoPicker = "0.9.5@aar"
+versions.glide = "3.7.0"
+
+
+def deps = [:]
+
+def leakcanary = [:]
+leakcanary.debug = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+leakcanary.release = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary"
+deps.leakcanary = leakcanary
+
+
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+deps.appcompat_v7 = "com.android.support:appcompat-v7:$versions.appcompat_v7"
+deps.support_v4 = "com.android.support:support-v4:$versions.support_v4"
+deps.recyclerview_v7 = "com.android.support:recyclerview-v7:$versions.recyclerview_v7"
+deps.design = "com.android.support:design:$versions.design"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.multidex = "com.android.support:multidex:$versions.multidex"
+deps.rxjava = "io.reactivex.rxjava2:rxandroid:$versions.rxjava"
+deps.eventbus = "org.greenrobot:eventbus:$versions.eventbus"
+deps.imageLoaderVersion = "com.nostra13.universalimageloader:universal-image-loader:$versions.imageLoaderVersion"
+deps.photoviewVersion = "com.github.chrisbanes.photoview:library:$versions.photoviewVersion"
+deps.recyclerview_swipe = "com.yanzhenjie:recyclerview-swipe:$versions.recyclerview_swipe"
+deps.tablayout = "com.flyco.tablayout:FlycoTabLayout_Lib:$versions.tablayout"
+deps.fastjson = "com.alibaba:fastjson:$versions.fastjson"
+deps.PhotoPicker = "me.iwf.photopicker:PhotoPicker:$versions.PhotoPicker"
+deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 19
+build_versions.target_sdk = 27
+build_versions.build_tools = "27.0.3"
+ext.build_versions = build_versions

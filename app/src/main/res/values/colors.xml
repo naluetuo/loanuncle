@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#FBD22E</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="tab_checked">#3F51B5</color>
+    <color name="tab_unchecked">#757575</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="personal_center_bg_gray">#626166</color> <!-- 浅灰色 -->
+
+    <color name="main_background">#FBD22E</color>
+    <color name="login_button">#333333</color>
+    <color name="stoke_line">#434343</color>
+    <color name="strip_background">#eeeeee</color>
+    <color name="number_background">#999999</color>
+</resources>

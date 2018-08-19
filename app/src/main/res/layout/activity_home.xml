@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_2"
+        android:background="@color/strip_background"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/qb_px_13"
+        android:layout_marginBottom="@dimen/qb_px_10">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/bill_btn"
+                android:layout_width="@dimen/qb_px_30"
+                android:layout_height="@dimen/qb_px_30"
+                android:background="@mipmap/bill_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/qb_px_20"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/bill_btn"
+                android:layout_marginTop="@dimen/qb_px_17"
+                android:text="@string/bill_txt"
+                android:textSize="@dimen/sp_10"
+                android:textColor="@color/login_button"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/loan_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/loan_btn"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/qb_px_17"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/loan_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/supermarket_btn"
+                android:layout_width="@dimen/qb_px_47"
+                android:layout_height="@dimen/qb_px_47"
+                android:background="@mipmap/supermarket_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/qb_px_10"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/supermarket_btn"
+                android:layout_marginTop="@dimen/qb_px_9"
+                android:text="@string/loan_supermarket"
+                android:textSize="@dimen/sp_10"
+                android:textColor="@color/login_button"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/mine_btn"
+                android:layout_width="@dimen/qb_px_30"
+                android:layout_height="@dimen/qb_px_30"
+                android:background="@mipmap/mine"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/qb_px_20"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/mine_btn"
+                android:layout_marginTop="@dimen/qb_px_17"
+                android:text="@string/mine"
+                android:textSize="@dimen/sp_10"
+                android:textColor="@color/login_button"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

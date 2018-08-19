@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/tool_bar"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/qb_px_110">
+
+        <com.loanuncle.gm.loanuncle.view.ItemRemoveRecyclerView
+            android:id="@+id/loanbill_List"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/blank_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/qb_px_215"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/blank_img"
+            android:layout_width="@dimen/qb_px_301"
+            android:layout_height="@dimen/qb_px_360"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/blank"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_login_cancle"
+            android:paddingLeft="@dimen/qb_px_242"
+            android:paddingRight="@dimen/qb_px_242"
+            android:paddingTop="@dimen/qb_px_26"
+            android:paddingBottom="@dimen/qb_px_26"
+            android:layout_marginTop="@dimen/qb_px_101"
+            android:text="@string/add_bill"
+            android:textSize="@dimen/sp_15"
+            android:textColor="@color/login_button"
+            android:layout_below="@+id/blank_img"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/float_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/qb_px_766"
+        android:layout_marginRight="@dimen/qb_px_30">
+
+        <RelativeLayout
+            android:id="@+id/supermarket_float"
+            android:layout_width="@dimen/qb_px_88"
+            android:layout_height="@dimen/qb_px_88"
+            android:background="@drawable/circular"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/qb_px_51"
+                android:layout_height="@dimen/qb_px_51"
+                android:layout_gravity="center"
+                android:src="@mipmap/supermarket_float"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_supermarket"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@color/login_button"
+            android:layout_below="@+id/supermarket_float"
+            android:layout_marginTop="@dimen/qb_px_10"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
