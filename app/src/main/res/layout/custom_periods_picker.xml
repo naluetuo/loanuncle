@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.loanuncle.gm.loanuncle.view.DatePickerView
+        <com.loanuncle.gm.juke.view.DatePickerView
             android:id="@+id/content_pv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qb_px_330"/>

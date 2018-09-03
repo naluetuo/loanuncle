@@ -16,4 +16,5 @@
     <color name="stoke_line">#434343</color>
     <color name="strip_background">#eeeeee</color>
     <color name="number_background">#999999</color>
+    <color name="unrepayment_background">#D2D2D2</color>
 </resources>

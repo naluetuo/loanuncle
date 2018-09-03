@@ -2,30 +2,31 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/qb_px_290"
+    android:layout_height="@dimen/qb_px_320"
     android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/item_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/qb_px_15"
-        android:paddingBottom="@dimen/qb_px_15">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/item_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/qb_px_75"
-            android:layout_marginRight="@dimen/qb_px_46"
-            android:background="@drawable/round_repayment"
+            android:layout_marginLeft="@dimen/qb_px_56"
+            android:layout_marginRight="@dimen/qb_px_56"
+            android:layout_marginTop="@dimen/qb_px_15"
+            android:layout_marginBottom="@dimen/qb_px_15"
+            android:elevation="4dp"
+            android:background="@drawable/round_dialog"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/qb_px_18"
+                android:layout_marginLeft="@dimen/qb_px_24"
                 android:layout_marginTop="@dimen/qb_px_20"
                 android:layout_marginBottom="@dimen/qb_px_10"
                 android:orientation="horizontal">
@@ -51,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/business_name_example"
+                    android:maxLength="12"
                     android:textSize="@dimen/sp_15"
                     android:textColor="@color/login_button"
                     android:layout_marginLeft="@dimen/qb_px_22"/>
@@ -61,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/user_name_example"
+                    android:maxLength="12"
                     android:textSize="@dimen/sp_12"
                     android:textColor="@color/login_button"
                     android:layout_marginLeft="@dimen/qb_px_21"/>
@@ -77,20 +80,35 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginLeft="@dimen/qb_px_20"
-                android:layout_marginRight="@dimen/qb_px_20">
+                android:paddingTop="@dimen/qb_px_10"
+                android:paddingBottom="@dimen/qb_px_10"
+                android:layout_marginLeft="@dimen/qb_px_24"
+                android:layout_marginRight="@dimen/qb_px_24">
+
+                <TextView
+                    android:id="@+id/overdue_time_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/pay_overdue"
+                    android:textSize="@dimen/sp_12"
+                    android:textColor="@color/login_button"
+                    android:layout_marginRight="@dimen/qb_px_19"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/pay_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/overdue_time_txt"
                     android:text="@string/day_count_example"
                     android:textSize="@dimen/sp_30"
                     android:textColor="@color/login_button"
                     android:gravity="center"/>
 
                 <TextView
+                    android:id="@+id/pay_time_endtxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/pay_time"
@@ -98,7 +116,7 @@
                     android:textSize="@dimen/sp_12"
                     android:textColor="@color/login_button"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/qb_px_25"/>
+                    android:layout_marginLeft="@dimen/qb_px_21"/>
 
                 <TextView
                     android:id="@+id/makesure_pay"
@@ -112,7 +130,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="@string/pay_sure"
-                    android:textSize="@dimen/sp_12"
+                    android:textSize="@dimen/sp_10"
                     android:textColor="@color/login_button"/>
 
             </RelativeLayout>
@@ -121,8 +139,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="@dimen/qb_px_20"
-                android:layout_marginRight="@dimen/qb_px_20"
+                android:layout_marginLeft="@dimen/qb_px_24"
+                android:layout_marginRight="@dimen/qb_px_24"
                 android:layout_marginTop="@dimen/qb_px_20">
 
                 <RelativeLayout
@@ -144,6 +162,7 @@
                         android:layout_below="@+id/money_shoudpay"
                         android:text="@string/shoud_pay_txt"
                         android:textSize="@dimen/sp_12"
+                        android:layout_marginTop="@dimen/qb_px_10"
                         android:textColor="@color/login_button"/>
 
                 </RelativeLayout>
@@ -173,6 +192,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/pay_count_txt"
                         android:textSize="@dimen/sp_12"
+                        android:layout_marginTop="@dimen/qb_px_10"
                         android:textColor="@color/login_button"/>
 
                 </LinearLayout>

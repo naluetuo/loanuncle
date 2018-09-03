@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/float_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/supermarket_float"
+        android:layout_width="@dimen/qb_px_88"
+        android:layout_height="@dimen/qb_px_88"
+        android:background="@drawable/circular"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/qb_px_51"
+            android:layout_height="@dimen/qb_px_51"
+            android:layout_gravity="center"
+            android:src="@mipmap/supermarket_float"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loan_supermarket"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/login_button"
+        android:layout_below="@+id/supermarket_float"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
+

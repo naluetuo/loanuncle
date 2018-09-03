@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/qb_px_290"
+    android:layout_height="@dimen/qb_px_320"
     android:background="@color/white">
 
     <LinearLayout
@@ -19,6 +19,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/qb_px_75"
             android:layout_marginRight="@dimen/qb_px_46"
+            android:layout_marginTop="@dimen/qb_px_15"
+            android:layout_marginBottom="@dimen/qb_px_15"
+            android:elevation="4dp"
             android:background="@drawable/round_repayment"
             android:orientation="vertical">
 
@@ -51,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/business_name_example"
+                    android:maxLength="12"
                     android:textSize="@dimen/sp_15"
                     android:textColor="@color/login_button"
                     android:layout_marginLeft="@dimen/qb_px_22"/>
@@ -61,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/user_name_example"
+                    android:maxLength="12"
                     android:textSize="@dimen/sp_12"
                     android:textColor="@color/login_button"
                     android:layout_marginLeft="@dimen/qb_px_21"/>
@@ -120,6 +125,7 @@
                         android:layout_below="@+id/money_shoudpay"
                         android:text="@string/all_pay"
                         android:textSize="@dimen/sp_12"
+                        android:layout_marginTop="@dimen/qb_px_10"
                         android:textColor="@color/login_button"/>
 
                 </RelativeLayout>
@@ -149,6 +155,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/pay_complite_date"
                         android:textSize="@dimen/sp_12"
+                        android:layout_marginTop="@dimen/qb_px_10"
                         android:textColor="@color/login_button"/>
 
                 </LinearLayout>

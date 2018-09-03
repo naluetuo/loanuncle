@@ -12,10 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/qb_px_99"
-        android:paddingTop="@dimen/qb_px_36"
-        android:paddingBottom="@dimen/qb_px_36">
+        app:layout_constraintTop_toBottomOf="@+id/login_toolbar"
+        android:paddingTop="@dimen/qb_px_28"
+        android:paddingBottom="@dimen/qb_px_28">
 
         <ImageView
             android:id="@+id/borrow_img"
@@ -31,7 +30,7 @@
             android:layout_centerVertical="true"
             android:text="@string/borrow_channel"
             android:textColor="@color/login_button"
-            android:textSize="@dimen/sp_14"
+            android:textSize="@dimen/sp_12"
             android:layout_toRightOf="@+id/borrow_img"
             android:layout_marginLeft="@dimen/qb_px_28"/>
 
@@ -40,8 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:gravity="end"
             android:background="@null"
             android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:maxLength="7"
             android:textSize="@dimen/sp_13"
             android:hint="@string/platform_name"
             android:layout_marginRight="@dimen/qb_px_34"/>
@@ -51,7 +53,7 @@
     <View
         android:id="@+id/segmenting_line1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_1"
+        android:layout_height="@dimen/qb_px_2"
         android:background="@color/strip_background"
         app:layout_constraintTop_toBottomOf="@+id/borrow_layout"
         android:layout_marginLeft="@dimen/qb_px_50"
@@ -63,8 +65,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/segmenting_line1"
-        android:paddingTop="@dimen/qb_px_36"
-        android:paddingBottom="@dimen/qb_px_36">
+        android:paddingTop="@dimen/qb_px_28"
+        android:paddingBottom="@dimen/qb_px_28">
 
         <ImageView
             android:id="@+id/user_img"
@@ -80,7 +82,7 @@
             android:layout_centerVertical="true"
             android:text="@string/user_name"
             android:textColor="@color/login_button"
-            android:textSize="@dimen/sp_14"
+            android:textSize="@dimen/sp_12"
             android:layout_toRightOf="@+id/user_img"
             android:layout_marginLeft="@dimen/qb_px_28"/>
 
@@ -90,7 +92,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@null"
+            android:gravity="end"
             android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:maxLength="7"
             android:textSize="@dimen/sp_13"
             android:hint="@string/user_name_edt"
             android:layout_marginRight="@dimen/qb_px_34"/>
@@ -100,7 +105,7 @@
     <View
         android:id="@+id/segmenting_line2"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_1"
+        android:layout_height="@dimen/qb_px_2"
         android:background="@color/strip_background"
         app:layout_constraintTop_toBottomOf="@+id/username_layout"
         android:layout_marginLeft="@dimen/qb_px_50"
@@ -112,8 +117,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/segmenting_line2"
-        android:paddingTop="@dimen/qb_px_36"
-        android:paddingBottom="@dimen/qb_px_36">
+        android:paddingTop="@dimen/qb_px_28"
+        android:paddingBottom="@dimen/qb_px_28">
 
         <ImageView
             android:id="@+id/repay_img"
@@ -129,7 +134,7 @@
             android:layout_centerVertical="true"
             android:text="@string/repay_date"
             android:textColor="@color/login_button"
-            android:textSize="@dimen/sp_14"
+            android:textSize="@dimen/sp_12"
             android:layout_toRightOf="@+id/repay_img"
             android:layout_marginLeft="@dimen/qb_px_28"/>
 
@@ -141,13 +146,13 @@
             android:layout_toLeftOf="@+id/right_img1"
             android:layout_marginRight="@dimen/qb_px_20"
             android:text="@string/repay_date_example"
-            android:textSize="@dimen/sp_13"
+            android:textSize="@dimen/sp_12"
             android:textColor="@color/login_button"/>
 
         <ImageView
             android:id="@+id/right_img1"
             android:layout_width="@dimen/qb_px_28"
-            android:layout_height="@dimen/qb_px_52"
+            android:layout_height="@dimen/qb_px_40"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@mipmap/right_go"
@@ -158,7 +163,7 @@
     <View
         android:id="@+id/segmenting_line3"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_1"
+        android:layout_height="@dimen/qb_px_2"
         android:background="@color/strip_background"
         app:layout_constraintTop_toBottomOf="@+id/repay_date_layout"
         android:layout_marginLeft="@dimen/qb_px_50"
@@ -170,13 +175,13 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/segmenting_line3"
-        android:paddingTop="@dimen/qb_px_36"
-        android:paddingBottom="@dimen/qb_px_36">
+        android:paddingTop="@dimen/qb_px_28"
+        android:paddingBottom="@dimen/qb_px_28">
 
         <ImageView
             android:id="@+id/monthly_supply_img"
-            android:layout_width="@dimen/qb_px_26"
-            android:layout_height="@dimen/qb_px_26"
+            android:layout_width="@dimen/qb_px_24"
+            android:layout_height="@dimen/qb_px_24"
             android:src="@mipmap/monthsupply"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/qb_px_37"/>
@@ -187,7 +192,7 @@
             android:layout_centerVertical="true"
             android:text="@string/monthly_supply"
             android:textColor="@color/login_button"
-            android:textSize="@dimen/sp_14"
+            android:textSize="@dimen/sp_12"
             android:layout_toRightOf="@+id/monthly_supply_img"
             android:layout_marginLeft="@dimen/qb_px_28"/>
 
@@ -197,8 +202,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@null"
+            android:gravity="end"
             android:layout_centerVertical="true"
             android:textSize="@dimen/sp_13"
+            android:singleLine="true"
+            android:maxLength="7"
+            android:inputType="number|numberDecimal"
             android:hint="@string/monthly_supply_edt"
             android:layout_marginRight="@dimen/qb_px_34"/>
 
@@ -207,7 +216,7 @@
     <View
         android:id="@+id/segmenting_line4"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_1"
+        android:layout_height="@dimen/qb_px_2"
         android:background="@color/strip_background"
         app:layout_constraintTop_toBottomOf="@+id/monthly_supply_layout"
         android:layout_marginLeft="@dimen/qb_px_50"
@@ -219,8 +228,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/segmenting_line4"
-        android:paddingTop="@dimen/qb_px_36"
-        android:paddingBottom="@dimen/qb_px_36">
+        android:paddingTop="@dimen/qb_px_28"
+        android:paddingBottom="@dimen/qb_px_28">
 
         <ImageView
             android:id="@+id/allperiods_count_img"
@@ -236,7 +245,7 @@
             android:layout_centerVertical="true"
             android:text="@string/allperiods_count"
             android:textColor="@color/login_button"
-            android:textSize="@dimen/sp_14"
+            android:textSize="@dimen/sp_12"
             android:layout_toRightOf="@+id/allperiods_count_img"
             android:layout_marginLeft="@dimen/qb_px_28"/>
 
@@ -248,13 +257,13 @@
             android:layout_toLeftOf="@+id/right_img2"
             android:layout_marginRight="@dimen/qb_px_20"
             android:text="@string/allperiods_count_example"
-            android:textSize="@dimen/sp_13"
+            android:textSize="@dimen/sp_12"
             android:textColor="@color/login_button"/>
 
         <ImageView
             android:id="@+id/right_img2"
             android:layout_width="@dimen/qb_px_28"
-            android:layout_height="@dimen/qb_px_52"
+            android:layout_height="@dimen/qb_px_40"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@mipmap/right_go"
@@ -265,7 +274,7 @@
     <View
         android:id="@+id/segmenting_line5"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_1"
+        android:layout_height="@dimen/qb_px_2"
         android:background="@color/strip_background"
         app:layout_constraintTop_toBottomOf="@+id/allperiods_count_layout"
         android:layout_marginLeft="@dimen/qb_px_50"
@@ -277,8 +286,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/segmenting_line5"
-        android:paddingTop="@dimen/qb_px_36"
-        android:paddingBottom="@dimen/qb_px_36">
+        android:paddingTop="@dimen/qb_px_28"
+        android:paddingBottom="@dimen/qb_px_28">
 
         <ImageView
             android:id="@+id/currentperiods_count_img"
@@ -294,7 +303,7 @@
             android:layout_centerVertical="true"
             android:text="@string/currentperiods_count"
             android:textColor="@color/login_button"
-            android:textSize="@dimen/sp_14"
+            android:textSize="@dimen/sp_12"
             android:layout_toRightOf="@+id/currentperiods_count_img"
             android:layout_marginLeft="@dimen/qb_px_28"/>
 
@@ -306,13 +315,13 @@
             android:layout_toLeftOf="@+id/right_img3"
             android:layout_marginRight="@dimen/qb_px_20"
             android:text="@string/allperiods_count_example"
-            android:textSize="@dimen/sp_13"
+            android:textSize="@dimen/sp_12"
             android:textColor="@color/login_button"/>
 
         <ImageView
             android:id="@+id/right_img3"
             android:layout_width="@dimen/qb_px_28"
-            android:layout_height="@dimen/qb_px_52"
+            android:layout_height="@dimen/qb_px_40"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@mipmap/right_go"
@@ -323,7 +332,7 @@
     <View
         android:id="@+id/segmenting_line6"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_1"
+        android:layout_height="@dimen/qb_px_2"
         android:background="@color/strip_background"
         app:layout_constraintTop_toBottomOf="@+id/currentperiods_count_layout"
         android:layout_marginLeft="@dimen/qb_px_50"
@@ -334,16 +343,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_login_cancle"
-        android:paddingLeft="@dimen/qb_px_271"
-        android:paddingRight="@dimen/qb_px_271"
-        android:paddingTop="@dimen/qb_px_26"
-        android:paddingBottom="@dimen/qb_px_26"
+        android:paddingLeft="@dimen/qb_px_260"
+        android:paddingRight="@dimen/qb_px_260"
+        android:paddingTop="@dimen/qb_px_18"
+        android:paddingBottom="@dimen/qb_px_18"
         app:layout_constraintTop_toBottomOf="@+id/segmenting_line6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/qb_px_60"
+        android:layout_marginTop="@dimen/qb_px_40"
         android:text="@string/save"
-        android:textSize="@dimen/sp_15"
+        android:textSize="@dimen/sp_14"
         android:textColor="@color/login_button"/>
 
 </android.support.constraint.ConstraintLayout>

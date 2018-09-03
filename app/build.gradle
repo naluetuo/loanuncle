@@ -4,11 +4,11 @@ android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
     defaultConfig {
-        applicationId "com.loanuncle.gm.loanuncle"
+        applicationId "com.loanuncle.gm.juke"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -26,7 +26,8 @@ dependencies {
     implementation deps.constraint_layout
     implementation deps.design
     implementation deps.recyclerview_swipe
-
+    implementation deps.eventbus
+    api project(':baselibrary')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

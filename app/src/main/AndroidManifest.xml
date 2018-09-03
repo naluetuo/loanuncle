@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.loanuncle.gm.loanuncle">
+          package="com.loanuncle.gm.juke">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
-        android:name=".LoanApp"
+        android:name="com.loanuncle.gm.juke.LoanApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".view.activity.LoginActivity">
+            android:name="com.loanuncle.gm.juke.view.activity.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -22,16 +25,37 @@
         </activity>
 
         <activity
-            android:name=".view.activity.BillCompletedActivity">
+            android:name="com.loanuncle.gm.juke.view.activity.LoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden">
 
         </activity>
 
         <activity
-            android:name=".view.activity.AddBillActivity">
+            android:name="com.loanuncle.gm.juke.view.activity.BillCompletedActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden">
 
         </activity>
 
-        <activity android:name=".view.activity.HomeActivity"></activity>
+        <activity
+            android:name="com.loanuncle.gm.juke.view.activity.AddBillActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
+
+        <activity android:name="com.loanuncle.gm.juke.view.activity.HomeActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"
+                  android:windowSoftInputMode="stateAlwaysHidden"></activity>
+
+        <activity android:name="com.loanuncle.gm.juke.view.activity.LoanWebActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"
+                  android:windowSoftInputMode="stateHidden"></activity>
+
+        <activity android:name="com.loanuncle.gm.juke.view.activity.AgreementWebActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"
+                  android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>
