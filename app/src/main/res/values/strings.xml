@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoanUncle</string>
+    <string name="app_name">51借款本</string>
 
     <string name="login">登录</string>
     <string name="login_sure">确认登录</string>
@@ -17,13 +17,21 @@
 
     <string name="login_immediately">立即登录</string>
     <string name="bill_complited">已完成账单</string>
-    <string name="public_number">货大叔公众号</string>
+    <string name="public_number">关注公众号</string>
     <string name="public_number_example">123456</string>
     <string name="login_cancle">注销登录</string>
     <string name="dialog_title_signout">是否退出当前账号？</string>
     <string name="cancle">取消</string>
     <string name="sure">确认</string>
     <string name="person_center">个人中心</string>
+    <string name="person_information">个人资料</string>
+    <string name="feedback">意见反馈</string>
+    <string name="help">帮助</string>
+    <string name="about">关于51借款本</string>
+    <string name="public_name">犀牛优选</string>
+    <string name="submit">提交</string>
+    <string name="help_content">请关注“犀牛优选”公众号,\n获取帮助信息</string>
+    <string name="feedback_content">感谢反馈，您已提交成功</string>
 
     <string name="bill_blank">还没有已完成的账单~</string>
     <string name="already_pay">已完成该账单</string>
@@ -59,11 +67,19 @@
     <string name="bill_txt">账单</string>
     <string name="loan_supermarket">贷一笔</string>
     <string name="mine">我的</string>
-    <string name="bookkeeping">记账</string>
+    <string name="bookkeeping">图表</string>
     <string name="loan_supermarket_title">贷款超市</string>
 
     <string name="agreement_title">51借款本网络协议</string>
     <string name="uninstall_weixin">检查到您手机没有安装微信，请安装后使用该功能</string>
-    <string name="public_dialog">还差一步就可以调侃本本啦！请在微信-通讯录-搜索框粘贴搜索“贷大叔”公众号，点击关注即可！</string>
+    <string name="public_dialog">还差一步就可以调侃本本啦！请在微信-通讯录-搜索框粘贴搜索“犀牛优选”公众号，点击关注即可！</string>
     <string name="is_goback">是否退出当前账号</string>
+
+    <string name="environmental">环境配置：</string>
+    <string name="sure_change">确认</string>
+
+    <string name="phone_number">手机号</string>
+    <string name="name">姓名</string>
+    <string name="gender">性别</string>
+    <string name="birthday">生日</string>
 </resources>

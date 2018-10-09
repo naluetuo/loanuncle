@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/add_bill_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_login_cancle"
+        android:paddingLeft="@dimen/qb_px_242"
+        android:paddingRight="@dimen/qb_px_242"
+        android:paddingTop="@dimen/qb_px_20"
+        android:paddingBottom="@dimen/qb_px_20"
+        android:layout_marginTop="@dimen/qb_px_100"
+        android:text="@string/add_bill"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/login_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

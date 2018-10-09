@@ -132,6 +132,6 @@ public class BillCompletedActivity extends LoanBaseActivity<BillCompletedContact
     @Override
     public void getNewUserInfoResponse(GetNewUserResponseBean getNewUserResponseBean) {
         super.getNewUserInfoResponse(getNewUserResponseBean);
-        refreshList();
+//        refreshList();
     }
 }

@@ -10,6 +10,7 @@ public class WebConstance {
     /**
      * 截取网页网址前半部分
      * */
+    public static String BASE_URL = "http://loans.jukmall.cn/";
     public static final String WEB_URLHEAD = "http://daidashu.local";
     public static final String GET_UERINFO = "getUserInfo";
     public static final String SET_USERRELOGIN = "setUserRelogin";

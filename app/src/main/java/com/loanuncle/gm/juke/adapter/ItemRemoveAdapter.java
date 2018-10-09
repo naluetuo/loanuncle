@@ -13,11 +13,13 @@ import android.widget.TextView;
 import com.loanuncle.gm.juke.R;
 import com.loanuncle.gm.juke.bean.response.BillBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemRemoveAdapter extends BaseAdapter<ItemRemoveAdapter.ViewHolder> {
     private Context mContext;
     private List<BillBean> mList;
+    private ArrayList<View> mFooterViewInfos;
     private BillCallBack mBillCallBack;
 
     public ItemRemoveAdapter(Context mContext,List<BillBean> mList,BillCallBack billCallBack) {

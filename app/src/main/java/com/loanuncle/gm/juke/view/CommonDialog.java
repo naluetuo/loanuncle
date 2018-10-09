@@ -3,6 +3,7 @@ package com.loanuncle.gm.juke.view;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Spanned;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -28,6 +29,7 @@ public class CommonDialog extends Dialog{
     private TextView delete;
     private TextView sure;
     private TextView head;
+    private TextView titleView;
 
     //固定大小Dialog模板
     public CommonDialog(Context context,String title,ICommonDialogClickCallBack callBack) {
@@ -62,7 +64,7 @@ public class CommonDialog extends Dialog{
         delete = findViewById(R.id.cancle_btn);
         sure = findViewById(R.id.sure_btn);
         head = findViewById(R.id.dialog_head);
-        TextView titleView = findViewById(R.id.dialog_title);
+        titleView = findViewById(R.id.dialog_title);
 
         titleView.setText(title);
 
@@ -112,7 +114,9 @@ public class CommonDialog extends Dialog{
      * 设置底部按钮的文字
      * */
     public void setBottomText(String deleteStr,String sureStr){
-        delete.setText(deleteStr);
+        if(delete != null){
+            delete.setText(deleteStr);
+        }
         sure.setText(sureStr);
     }
 
@@ -128,10 +132,25 @@ public class CommonDialog extends Dialog{
      * */
     public void setHeadVisiable(boolean isShow){
         if(isShow){
-           head.setVisibility(View.VISIBLE);
+            head.setVisibility(View.VISIBLE);
         }else {
             head.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * 设置标题
+     *
+     * @param title*/
+    public void setTitleStr(Spanned title){
+        titleView.setText(title);
+    }
+
+    /**
+     * 设置头部显示字符
+     * */
+    public void setHead(String headStr){
+        head.setText(headStr);
     }
 
     public interface ICommonDialogClickCallBack{

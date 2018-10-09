@@ -42,8 +42,8 @@ public class VersionConstant {
         ANDROID_OSCODE = SystemUtil.getSystemVersion();
         PHONE_TYPE = SystemUtil.getDeviceBrand();
         IMMEI = SystemUtil.getIMEI(context);
+        CHANNEL = VersionUtil.getAppMetaData(context,"UMENG_CHANNEL");
         PACKAGE_NAME = "juke";
         OS_TYPE = "Android";
-        CHANNEL = "guanwang";
     }
 }

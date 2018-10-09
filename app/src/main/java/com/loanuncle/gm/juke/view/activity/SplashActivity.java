@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
 
 import com.loanuncle.gm.baselibrary.mvpbase.baseimpl.BaseActivity;
 import com.loanuncle.gm.juke.R;
@@ -64,12 +63,13 @@ public class SplashActivity extends BaseActivity {
      * */
     private void startMainActivity(){
         initContact();
-        if(TextUtils.isEmpty(UserConstant.ACCOUNT_ID)){
-            intent = new Intent(this,LoginActivity.class);
-            intent.putExtra("isfromSplash",true);
-        }else {
-            intent = new Intent(this,HomeActivity.class);
-        }
+//        if(TextUtils.isEmpty(UserConstant.ACCOUNT_ID)){
+//            intent = new Intent(this,LoginActivity.class);
+//            intent.putExtra("isfromSplash",true);
+//        }else {
+//            intent = new Intent(this,HomeActivity.class);
+//        }
+        intent = new Intent(this,HomeActivity.class);
         startActivity(intent);
         finish();
     }
@@ -90,6 +90,16 @@ public class SplashActivity extends BaseActivity {
             //网络权限
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
                 needPermission.add(Manifest.permission.INTERNET);
+            }
+
+            //网络状态权限
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+                needPermission.add(Manifest.permission.ACCESS_NETWORK_STATE);
+            }
+
+            //wifi状态权限
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED) {
+                needPermission.add(Manifest.permission.ACCESS_WIFI_STATE);
             }
 
             if (needPermission.size() > 0) {

@@ -3,18 +3,158 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
+
     defaultConfig {
         applicationId "com.loanuncle.gm.juke"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-        versionCode 100
-        versionName "1.0.0"
+        versionCode 111
+        versionName "1.1.1"
+        flavorDimensions "versionCode"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    signingConfigs {
         release {
+            keyAlias 'loanuncle'
+            keyPassword '123456'
+            storeFile file('../loanuncle.jks')
+            storePassword '123456'
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "loanuncle_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${buildType.name}.apk"
+        }
+    }
+
+    productFlavors{
+
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+
+        guanwang {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mk360 {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkhw {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkbd {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkxm {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkyyb {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkuc {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkmz {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mklx {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkoppo {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkvivo {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkyunos {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkjinli {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkaz {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mksg {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkchuizi {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkwo {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        mkalijy {
+            versionCode 111
+            versionName "1.1.1"
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -27,6 +167,7 @@ dependencies {
     implementation deps.design
     implementation deps.recyclerview_swipe
     implementation deps.eventbus
+
     api project(':baselibrary')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

@@ -5,8 +5,11 @@ import com.loanuncle.gm.juke.bean.response.AddBillResponseBean;
 import com.loanuncle.gm.juke.bean.response.AgreementResponseBean;
 import com.loanuncle.gm.juke.bean.response.BaseInfoResponseBean;
 import com.loanuncle.gm.juke.bean.response.DeleteBillResponseBean;
+import com.loanuncle.gm.juke.bean.response.EditInformationResponseBean;
+import com.loanuncle.gm.juke.bean.response.FeedBackResponseBean;
 import com.loanuncle.gm.juke.bean.response.GetBillDoneListResponseBean;
 import com.loanuncle.gm.juke.bean.response.GetBillListResponseBean;
+import com.loanuncle.gm.juke.bean.response.GetInformationResponseBean;
 import com.loanuncle.gm.juke.bean.response.GetNewUserResponseBean;
 import com.loanuncle.gm.juke.bean.response.LoginResponseBean;
 import com.loanuncle.gm.juke.bean.response.LogoutResponseBean;
@@ -30,8 +33,6 @@ public interface RetrofitService {
 
 
 //    String BASE_URL = "http://172.16.3.247:6010/";
-
-    String BASE_URL = "http://loans.jukmall.cn/";
 
     /**
      * 请求发送验证码
@@ -98,5 +99,23 @@ public interface RetrofitService {
      * */
     @POST("account/getNewInfo")
     Observable<GetNewUserResponseBean> getNewUserInfo(@Body RequestBody body);
+
+    /**
+     * 获取用户信息
+     * */
+    @POST("account/getAccountInfo")
+    Observable<GetInformationResponseBean> getInformation(@Body RequestBody body);
+
+    /**
+     * 修改用户信息
+     * */
+    @POST("account/editAccountInfo")
+    Observable<EditInformationResponseBean> editInformation(@Body RequestBody body);
+
+    /**
+     * 意见反馈
+     * */
+    @POST("common/submitFeedback")
+    Observable<FeedBackResponseBean> feedBack(@Body RequestBody body);
 
 }

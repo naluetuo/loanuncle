@@ -15,6 +15,7 @@ import com.loanuncle.gm.baselibrary.mvpbase.baseimpl.BaseActivity;
 import com.loanuncle.gm.juke.R;
 import com.loanuncle.gm.juke.bean.request.GetNewUserRequestBean;
 import com.loanuncle.gm.juke.bean.request.LogoutRequestBean;
+import com.loanuncle.gm.juke.bean.response.FeedBackResponseBean;
 import com.loanuncle.gm.juke.bean.response.GetNewUserResponseBean;
 import com.loanuncle.gm.juke.bean.response.LogoutResponseBean;
 import com.loanuncle.gm.juke.constant.OtherConstant;
@@ -22,10 +23,14 @@ import com.loanuncle.gm.juke.constant.ResponseCodeConstant;
 import com.loanuncle.gm.juke.constant.UserConstant;
 import com.loanuncle.gm.juke.contact.GetNewUserContact;
 import com.loanuncle.gm.juke.contact.PersonCenterContact;
+import com.loanuncle.gm.juke.eventbus.NewAccountEventBus;
+import com.loanuncle.gm.juke.eventbus.StatusEventBus;
 import com.loanuncle.gm.juke.presenter.GetNewUserPresenter;
 import com.loanuncle.gm.juke.presenter.PersonCenterPresenter;
 import com.loanuncle.gm.juke.util.SharePreferenceUtils;
 import com.loanuncle.gm.juke.view.activity.LoginActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -153,7 +158,6 @@ public abstract class LoanBaseActivity<P extends BasePresenter> extends BaseActi
         getNewUserRequestBean.setToken(UserConstant.TOKEN);
         getNewUserRequestBean.setMobile(UserConstant.MOBILE);
         getNewUserPresenter.getNewUserInfoRequest(getNewUserRequestBean);
-
     }
 
     /**
@@ -180,7 +184,14 @@ public abstract class LoanBaseActivity<P extends BasePresenter> extends BaseActi
             UserConstant.ACCOUNT_ID = "";
             SharePreferenceUtils.saveObject(LoanBaseActivity.this,SharePreferenceUtils.ACCOUNT_ID,UserConstant.ACCOUNT_ID);
         }
-        jumptoLogin();
+//        jumptoLogin();
+        finish();
+        EventBus.getDefault().post(new StatusEventBus());
+    }
+
+    @Override
+    public void feedBackResponse(FeedBackResponseBean feedBackResponseBean) {
+
     }
 
     @Override
@@ -190,5 +201,12 @@ public abstract class LoanBaseActivity<P extends BasePresenter> extends BaseActi
             UserConstant.ACCOUNT_ID = getNewUserResponseBean.getResult();
             SharePreferenceUtils.saveObject(LoanBaseActivity.this,SharePreferenceUtils.ACCOUNT_ID,UserConstant.ACCOUNT_ID);
         }
+//        Toast.makeText(this, "getNewAccountInfo调用返回成功", Toast.LENGTH_SHORT).show();
+        EventBus.getDefault().post(new NewAccountEventBus());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

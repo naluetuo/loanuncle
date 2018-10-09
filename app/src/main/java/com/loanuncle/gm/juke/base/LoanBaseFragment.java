@@ -1,5 +1,6 @@
 package com.loanuncle.gm.juke.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.loanuncle.gm.baselibrary.mvpbase.baseimpl.BaseFragment;
 import com.loanuncle.gm.juke.R;
 import com.loanuncle.gm.juke.bean.request.GetNewUserRequestBean;
 import com.loanuncle.gm.juke.bean.request.LogoutRequestBean;
+import com.loanuncle.gm.juke.bean.response.FeedBackResponseBean;
 import com.loanuncle.gm.juke.bean.response.GetNewUserResponseBean;
 import com.loanuncle.gm.juke.bean.response.LogoutResponseBean;
 import com.loanuncle.gm.juke.constant.ResponseCodeConstant;
@@ -23,6 +25,8 @@ import com.loanuncle.gm.juke.contact.PersonCenterContact;
 import com.loanuncle.gm.juke.presenter.GetNewUserPresenter;
 import com.loanuncle.gm.juke.presenter.PersonCenterPresenter;
 import com.loanuncle.gm.juke.util.SharePreferenceUtils;
+import com.loanuncle.gm.juke.util.ToastUtils;
+import com.loanuncle.gm.juke.view.activity.LoginActivity;
 
 
 /**
@@ -34,7 +38,7 @@ public abstract class LoanBaseFragment<P extends BasePresenter> extends BaseFrag
         PersonCenterContact.view, GetNewUserContact.view {
 
     protected P presenter;
-    private Toolbar toolbar;
+    public Toolbar toolbar;
     public TextView mToolBarTitle;
     public ImageView mToolBarRightImage;
 
@@ -122,6 +126,15 @@ public abstract class LoanBaseFragment<P extends BasePresenter> extends BaseFrag
         if(ResponseCodeConstant.CODE_200.equals(code)){
             UserConstant.ACCOUNT_ID = getNewUserResponseBean.getResult();
             SharePreferenceUtils.saveObject(getActivity(),SharePreferenceUtils.ACCOUNT_ID,UserConstant.ACCOUNT_ID);
+        }else if(ResponseCodeConstant.CODE_401.equals(code)){
+            ToastUtils.showShort(getActivity(),getNewUserResponseBean.getErrorMsg());
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
         }
+    }
+
+    @Override
+    public void feedBackResponse(FeedBackResponseBean feedBackResponseBean) {
+
     }
 }

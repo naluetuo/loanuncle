@@ -26,7 +26,7 @@ public class MyWebClient extends WebViewClient {
         if(url == null){
             return false;
         }
-
+//        interceptUrlCallBack.getNewAccountInfo();
         if(url.startsWith(WebConstance.WEB_URLHEAD)){
             String action = "";
             if(url.contains("&")){
@@ -36,17 +36,22 @@ public class MyWebClient extends WebViewClient {
             }
             if(WebConstance.GET_UERINFO.equals(action)){
                 interceptUrlCallBack.getUserInfo();
+                return true;
             }else if(WebConstance.SET_USERRELOGIN.equals(action)){
                 interceptUrlCallBack.setUserRelogin();
                 return true;
             }else if(WebConstance.GET_NEWACCOUNTINFO.equals(action)){
+                interceptUrlCallBack.showLog("截取到getNewAccountInfo");
                 interceptUrlCallBack.getNewAccountInfo();
+                return true;
             }else if(WebConstance.WEBPULL.equals(action)){
                 interceptUrlCallBack.pullPlatformInfo();
+                interceptUrlCallBack.getUserInfo();
                 return true;
             }else if(WebConstance.WEBPUSH.equals(action)){
                 String body = url.substring(url.indexOf("&",0)+1);
                 interceptUrlCallBack.pushPlatformInfo(body);
+                interceptUrlCallBack.getUserInfo();
                 return true;
             }
         }
@@ -63,7 +68,6 @@ public class MyWebClient extends WebViewClient {
         String title = view.getTitle();
         view.getSettings().setJavaScriptEnabled(true);
         interceptUrlCallBack.setWebTitle(title);
-        interceptUrlCallBack.getUserInfo();
         interceptUrlCallBack.isRootWeb(url);
     }
 
@@ -97,5 +101,9 @@ public class MyWebClient extends WebViewClient {
          * 判断是否是底层网页
          * */
         boolean isRootWeb(String url);
+        /**
+         * 显示弹框
+         * */
+        void showLog(String str);
     }
 }

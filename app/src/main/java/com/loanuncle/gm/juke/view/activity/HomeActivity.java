@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -16,13 +17,23 @@ import com.loanuncle.gm.juke.bean.request.BaseInfoRequestBean;
 import com.loanuncle.gm.juke.bean.response.BaseInfoResponseBean;
 import com.loanuncle.gm.juke.constant.OtherConstant;
 import com.loanuncle.gm.juke.constant.ResponseCodeConstant;
+import com.loanuncle.gm.juke.constant.UserConstant;
 import com.loanuncle.gm.juke.constant.VersionConstant;
+import com.loanuncle.gm.juke.constant.WebConstance;
 import com.loanuncle.gm.juke.contact.SplashContact;
+import com.loanuncle.gm.juke.eventbus.ChangeButtonEventBus;
 import com.loanuncle.gm.juke.presenter.SplashPresenter;
+import com.loanuncle.gm.juke.util.SharePreferenceUtils;
+import com.loanuncle.gm.juke.util.ToastUtils;
 import com.loanuncle.gm.juke.view.ChatView;
 import com.loanuncle.gm.juke.view.CommonDialog;
 import com.loanuncle.gm.juke.view.fragment.BillFragment;
+import com.loanuncle.gm.juke.view.fragment.ChartWebFragment;
 import com.loanuncle.gm.juke.view.fragment.PersonCenterFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
@@ -42,6 +53,7 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
 
     private ImageView mBillBtn;
     private ImageView mMineBtn;
+    private ImageView mChartBtn;
     private ChatView chatView;
     private CommonDialog mCommonDialog;
 
@@ -49,6 +61,9 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_home);
         super.onCreate(savedInstanceState);
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
 
         //步骤一：添加一个FragmentTransaction的实例
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -58,6 +73,12 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
 
         if (savedInstanceState == null) {
             loadRootFragment(R.id.fragment_layout, billFragment); //activity初始加载HomeFragment
+        }
+
+        String address = SharePreferenceUtils.readString(this,SharePreferenceUtils.ADDRESS);
+        if(!TextUtils.isEmpty(address)){
+            WebConstance.BASE_URL = address;
+            ToastUtils.showShort(this,WebConstance.BASE_URL);
         }
 
     }
@@ -78,6 +99,7 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
         mAddBillLayout = findViewById(R.id.add_bill_layout);
         mBillBtn = findViewById(R.id.bill_btn);
         mMineBtn = findViewById(R.id.mine_btn);
+        mChartBtn = findViewById(R.id.add_bill_btn);
 
         mBillBtnLayout.setOnClickListener(this);
         mLoanLayout.setOnClickListener(this);
@@ -100,7 +122,9 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
                     return;
                 }else {
                     start(BillFragment.newInstance(HomeActivity.this), SupportFragment.SINGLETASK);
-                    changeBottomBtn();
+                    mBillBtn.setImageResource(R.mipmap.bill_click_btn);
+                    mMineBtn.setImageResource(R.mipmap.mine_btn);
+                    mChartBtn.setImageResource(R.mipmap.icon_chart);
                 }
                 break;
             case R.id.loan_layout:
@@ -112,14 +136,25 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
                     return;
                 }else {
                     start(PersonCenterFragment.newInstance(HomeActivity.this),SupportFragment.SINGLETASK);
-                    changeBottomBtn();
                 }
                 break;
             case R.id.add_bill_layout:
-                Intent addIntent = new Intent(HomeActivity.this,AddBillActivity.class);
-                startActivity(addIntent);
+                if(UserConstant.LOGIN_STATUS){
+                    start(ChartWebFragment.newInstance(HomeActivity.this), SupportFragment.SINGLETASK);
+                }else {
+                    Intent addIntent = new Intent(HomeActivity.this,LoginActivity.class);
+                    startActivity(addIntent);
+                }
                 break;
                 default:
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
         }
     }
 
@@ -144,14 +179,27 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
     /**
      * 改变底部按钮背景
      * */
-    private void changeBottomBtn(){
-        if(getTopFragment() instanceof BillFragment){
-            mBillBtn.setImageResource(R.mipmap.bill_btn);
-            mMineBtn.setImageResource(R.mipmap.mine_click_btn);
-        }else {
+    private void changeBottomBtn(int type){
+        if(type == 1){
             mBillBtn.setImageResource(R.mipmap.bill_click_btn);
             mMineBtn.setImageResource(R.mipmap.mine_btn);
+            mChartBtn.setImageResource(R.mipmap.icon_chart);
+        }else if(type == 2){
+            mBillBtn.setImageResource(R.mipmap.bill_btn);
+            mMineBtn.setImageResource(R.mipmap.mine_btn);
+            mChartBtn.setImageResource(R.mipmap.icon_chart_choosed);
+        }else {
+            mBillBtn.setImageResource(R.mipmap.bill_btn);
+            mMineBtn.setImageResource(R.mipmap.mine_click_btn);
+            mChartBtn.setImageResource(R.mipmap.icon_chart);
         }
+//        if(getTopFragment() instanceof BillFragment){
+//            mBillBtn.setImageResource(R.mipmap.bill_btn);
+//            mMineBtn.setImageResource(R.mipmap.mine_click_btn);
+//        }else {
+//            mBillBtn.setImageResource(R.mipmap.bill_click_btn);
+//            mMineBtn.setImageResource(R.mipmap.mine_btn);
+//        }
     }
 
     /**
@@ -201,6 +249,8 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
 
             OtherConstant.SHOW_LOAN = baseInfoResponseBean.getResult().isShowLoans();
             OtherConstant.LOAN_URL = baseInfoResponseBean.getResult().getLoanUrl();
+            OtherConstant.PUBLIC_NAME = baseInfoResponseBean.getResult().getWechatPublicName();
+            OtherConstant.BILLCHART_URL = baseInfoResponseBean.getResult().getBillChartUrl();
             changeLoanShow();
             int serviceVersion = baseInfoResponseBean.getResult().getAppUpdateResultVo().getServiceVersion();
             VersionConstant.UPDATE_URL = baseInfoResponseBean.getResult().getAppUpdateResultVo().getUpdateUrl();
@@ -242,5 +292,19 @@ public class HomeActivity extends LoanBaseActivity<SplashContact.presenter> impl
         mCommonDialog.dismiss();
         mCommonDialog = null;
         jumpToUpdate(VersionConstant.UPDATE_URL);
+    }
+
+    /**
+     * 订阅eventbus当完成区域选择后
+     *
+     * @param statusEventBus
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveEvent(ChangeButtonEventBus statusEventBus) {
+        try {
+            changeBottomBtn(statusEventBus.type);
+        } catch (Exception e) {
+
+        }
     }
 }

@@ -10,6 +10,7 @@ public final class SharePreferenceUtils {
     public static final String ACCOUNT_ID = "account_id";
     public static final String TOKEN = "token";
     public static final String PHONE_NUMBER = "phone_number";
+    public static final String ADDRESS = "address";
 
     public static void saveObject(Context context, String name, String key, Object value) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE);

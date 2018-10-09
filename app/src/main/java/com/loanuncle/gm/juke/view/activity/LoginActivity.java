@@ -22,6 +22,7 @@ import com.loanuncle.gm.juke.bean.response.VerCodeResponseBean;
 import com.loanuncle.gm.juke.constant.OtherConstant;
 import com.loanuncle.gm.juke.constant.ResponseCodeConstant;
 import com.loanuncle.gm.juke.constant.UserConstant;
+import com.loanuncle.gm.juke.constant.WebConstance;
 import com.loanuncle.gm.juke.contact.LoginContact;
 import com.loanuncle.gm.juke.presenter.LoginPresenter;
 import com.loanuncle.gm.juke.util.PhoneFormatCheckUtils;
@@ -57,17 +58,21 @@ public class LoginActivity extends LoanBaseActivity<LoginContact.presenter> impl
     /** 验证码 */
     private String mVerCode;
     private boolean checked = true;
-    /** 是否从闪屏页跳转过来 */
-    private boolean isFromSplash;
 
     private Disposable mDisposable;
+    /** 是否可点击验证码 */
+    private boolean checkAble = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_login);
         super.onCreate(savedInstanceState);
-        isFromSplash = getIntent().getBooleanExtra("isfromSplash",false);
         initToolBar();
+        String address = SharePreferenceUtils.readString(this,SharePreferenceUtils.ADDRESS);
+        if(!TextUtils.isEmpty(address)){
+            WebConstance.BASE_URL = address;
+            ToastUtils.showShort(this,WebConstance.BASE_URL);
+        }
     }
 
     @Override
@@ -100,18 +105,22 @@ public class LoginActivity extends LoanBaseActivity<LoginContact.presenter> impl
     @Override
     public void initToolBar() {
         super.initToolBar();
-        mToolBarRightImage.setVisibility(View.GONE);
         toolbar.setNavigationIcon(R.mipmap.back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isFromSplash){
-                    jumpToHome();
-                }else {
-                    finish();
-                }
+                finish();
             }
         });
+        mToolBarRightImage.setVisibility(View.GONE);
+//        mToolBarRightImage.setImageResource(R.mipmap.setting);
+//        mToolBarRightImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(LoginActivity.this, AddressChangeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override
@@ -127,7 +136,10 @@ public class LoginActivity extends LoanBaseActivity<LoginContact.presenter> impl
             case R.id.getvercode_btn:
                 mPhoneNumber = mPhoneNumberEdt.getText().toString();
                 if(checkPhoneNumber(mPhoneNumber)){
-                    requestVerCode();
+                    if(mGetVerCodeBtn.getVisibility() == View.VISIBLE && checkAble){
+                        checkAble = false;
+                        requestVerCode();
+                    }
                 }
                 break;
             case R.id.agreement_txt:
@@ -273,6 +285,7 @@ public class LoginActivity extends LoanBaseActivity<LoginContact.presenter> impl
         String code = verCodeResponseBean.getReturnCode();
         if(ResponseCodeConstant.CODE_200.equals(code)){
             startCountDown();
+            checkAble = true;
             Toast.makeText(this,"验证码已发送",Toast.LENGTH_SHORT).show();
         }
         else if(ResponseCodeConstant.CODE_401.equals(code)){

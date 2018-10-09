@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.loanuncle.gm.juke.R;
+import com.loanuncle.gm.juke.constant.OtherConstant;
+import com.loanuncle.gm.juke.util.DisplayUtils;
 
 /**
  * Created by GM on 2018/8/27.
@@ -56,7 +58,7 @@ public class ChatView extends RelativeLayout{
         DisplayMetrics dm = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
         //通过像素密度来设置按钮的大小
-        dpi = dpi(dm.densityDpi);
+        dpi = dpi(OtherConstant.FLOAT_SIZE);
         //屏宽
         screenWidth = wm.getDefaultDisplay().getWidth();
         //屏高
@@ -83,19 +85,22 @@ public class ChatView extends RelativeLayout{
      *
      */
     private int dpi(int densityDpi) {
-        if (densityDpi <= 120) {
-            return 36;
-        } else if (densityDpi <= 160) {
-            return 47;
-        } else if (densityDpi <= 240) {
-            return 94;
-        } else if (densityDpi <= 320) {
-            return 141;
-        } else if(densityDpi <= 480){
-            return 188;
-        }else {
-            return 188;
-        }
+        int size = DisplayUtils.dp2px(mContext,densityDpi);
+        return size;
+
+//        if (densityDpi <= 120) {
+//            return 36;
+//        } else if (densityDpi <= 160) {
+//            return 47;
+//        } else if (densityDpi <= 240) {
+//            return 94;
+//        } else if (densityDpi <= 320) {
+//            return 141;
+//        } else if(densityDpi <= 480){
+//            return 188;
+//        }else {
+//            return 188;
+//        }
     }
 
     public void show() {

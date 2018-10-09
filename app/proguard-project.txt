@@ -1,0 +1,126 @@
+
+-dontskipnonpubliclibraryclassmembers
+
+# 设置混淆的压缩比率 0 ~ 7
+-optimizationpasses 5
+# 【混淆时不会产生形形色色的类名 】
+-dontusemixedcaseclassnames
+# 【指定不去忽略非公共的库类。 】
+-dontskipnonpubliclibraryclasses
+# 不预校验
+-dontpreverify
+# 混淆后生产映射文件 map类名转化后类名的映射
+-verbose
+# 混淆采用的算法
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+
+-ignorewarnings
+-keep class * { public private *; }
+
+
+
+# 所有activity的子类不要去混淆
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.support.v4.app.Fragment
+-keep public class * extends android.support.v4.app.FragmentActivity
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.view.View
+-keep public class * extends android.widget.LinearLayout
+-keep public class * extends android.widget.PopupWindow
+-keep public class * extends android.widget.RelativeLayout
+-keep public class * extends android.widget.TextView
+-keep public class * extends android.widget.ImageView
+-keep public class * extends android.widget.Dialog
+-keep public class * extends android.widget.GridView
+-keep public class * extends android.widget.ListView
+-keep public class * extends android.preference.Preference        # 保持哪些类不被混淆
+-keep public class com.android.vending.licensing.ILicensingService    # 保持哪些类不被混淆
+-keep public class * extends android.widget.FrameLayout     # 保持哪些类不被混淆
+
+-keepclasseswithmembers class * extends android.view.View{# 保持自定义控件类不被混淆
+  *** get*();
+  void set*(***);
+  public <init>(android.content.Context);
+   public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+-keepclassmembers class * extends android.app.Activity { # 保留在activity的方法中参数是view的方法
+    public void *(android.view.View);
+}
+-keepclassmembers enum * {     # 保持枚举 enum 类不被混淆
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep class * implements android.os.Parcelable { # 保持 Parcelable 不被混淆
+    public static final android.os.Parcelable$Creator *;
+}
+
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+# Explicitly preserve all serialization members. The Serializable interface
+ # is only a marker interface, so it wouldn't save them.
+ -keepclassmembers class * implements java.io.Serializable {
+     static final long serialVersionUID;
+     private static final java.io.ObjectStreamField[] serialPersistentFields;
+     private void writeObject(java.io.ObjectOutputStream);
+     private void readObject(java.io.ObjectInputStream);
+     java.lang.Object writeReplace();
+     java.lang.Object readResolve();
+ }
+
+ -keep class * extends java.util.ListResourceBundle {
+     protected Object[][] getContents();
+ }
+
+ -keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+     public static final *** NULL;
+ }
+
+-keep class com.google.gson.** {*;}
+
+#ok http
+-dontwarn okhttp3.internal.huc.**
+-dontwarn java.nio.file.**
+-dontwarn okio.Okio
+-dontwarn okio.DeflaterSink
+
+#==============EVENTBUS 混淆配置===================
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+
+# Only required if you use AsyncExecutor
+-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
+    <init>(java.lang.Throwable);
+}
+#==============EVENTBUS 混淆配置结束===================
+
+# support-v7-appcompat
+-keep public class android.support.v7.widget.** { *; }
+-keep public class android.support.v7.internal.widget.** { *; }
+-keep public class android.support.v7.internal.view.menu.** { *; }
+-keep public class * extends android.support.v4.view.ActionProvider {
+    public <init>(android.content.Context);
+}
+# support-design
+-dontwarn android.support.design.**
+-keep class android.support.design.** { *; }
+-keep interface android.support.design.** { *; }
+-keep public class android.support.design.R$* { *; }
+
+-keepclasseswithmembernames,includedescriptorclasses class * {
+    native <methods>;
+}
+
+-keep class com.umeng.** {*;}
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}

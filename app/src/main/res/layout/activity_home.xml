@@ -97,7 +97,7 @@
                 android:id="@+id/add_bill_btn"
                 android:layout_width="@dimen/qb_px_30"
                 android:layout_height="@dimen/qb_px_30"
-                android:background="@mipmap/add_bill"
+                android:background="@mipmap/icon_chart"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/qb_px_20"/>
 

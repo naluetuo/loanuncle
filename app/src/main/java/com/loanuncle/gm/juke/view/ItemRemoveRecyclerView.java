@@ -14,6 +14,8 @@ import android.widget.Scroller;
 import com.loanuncle.gm.juke.R;
 import com.loanuncle.gm.juke.adapter.ItemRemoveAdapter;
 
+import java.util.ArrayList;
+
 /**
  * created by GM on 2018/8/19
  * @description 可侧滑删除的recyclerview
@@ -48,6 +50,10 @@ public class ItemRemoveRecyclerView extends RecyclerView {
     private Scroller mScroller;
     private OnItemRemoveClickListener mListener;
 
+    private ArrayList<View> mHeaderViewInfos = new ArrayList<View>();
+    private ArrayList<View> mFooterViewInfos = new ArrayList<View>();
+    private Adapter mAdapter;
+
     public ItemRemoveRecyclerView(Context context) {
         this(context, null);
     }
@@ -62,6 +68,42 @@ public class ItemRemoveRecyclerView extends RecyclerView {
 
         mScroller = new Scroller(context, new LinearInterpolator());
         mVelocityTracker = VelocityTracker.obtain();
+    }
+
+    public void addHeaderView(View v) {
+        mHeaderViewInfos.add(v);
+
+        // Wrap the adapter if it wasn't already wrapped.
+        if (mAdapter != null) {
+            if (!(mAdapter instanceof WrapRecyclerViewAdapter)) {
+                mAdapter = new WrapRecyclerViewAdapter(mHeaderViewInfos, mFooterViewInfos, mAdapter);
+            }
+        }
+    }
+
+    public void addFooterView(View v) {
+        mFooterViewInfos.add(v);
+        // Wrap the adapter if it wasn't already wrapped.
+        if (mAdapter != null) {
+            if (!(mAdapter instanceof WrapRecyclerViewAdapter)) {
+                mAdapter = new WrapRecyclerViewAdapter(mHeaderViewInfos, mFooterViewInfos, mAdapter);
+            }
+        }
+    }
+
+    @Override
+    public void setAdapter(Adapter adapter) {
+        if (mHeaderViewInfos.size() > 0 || mFooterViewInfos.size() > 0) {
+            mAdapter = new WrapRecyclerViewAdapter(mHeaderViewInfos, mFooterViewInfos, adapter);
+        } else {
+            mAdapter = adapter;
+        }
+        super.setAdapter(mAdapter);
+    }
+
+    @Override
+    public Adapter getAdapter(){
+        return mAdapter;
     }
 
     @Override

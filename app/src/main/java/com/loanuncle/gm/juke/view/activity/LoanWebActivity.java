@@ -8,6 +8,7 @@ import android.webkit.ValueCallback;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,8 +20,13 @@ import com.loanuncle.gm.juke.bean.request.WebPullDataBean;
 import com.loanuncle.gm.juke.constant.OtherConstant;
 import com.loanuncle.gm.juke.contact.GetNewUserContact;
 import com.loanuncle.gm.juke.contact.PersonCenterContact;
+import com.loanuncle.gm.juke.eventbus.NewAccountEventBus;
 import com.loanuncle.gm.juke.util.MyWebChromClient;
 import com.loanuncle.gm.juke.util.MyWebClient;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +49,9 @@ public class LoanWebActivity extends LoanBaseActivity implements MyWebClient.Int
         setContentView(R.layout.activity_supermarket);
         super.onCreate(savedInstanceState);
         initToolBar();
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -69,9 +78,10 @@ public class LoanWebActivity extends LoanBaseActivity implements MyWebClient.Int
         settings.setLoadWithOverviewMode(true);
         settings.setJavaScriptEnabled(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
+        settings.setDomStorageEnabled(true);
         mLoanWebView.setWebViewClient(new MyWebClient(this));
         mLoanWebView.setWebChromeClient(new MyWebChromClient(mPbProgress));
-//        mLoanWebView.loadUrl("file:///android_asset/javascript.html");
+//        mLoanWebView.loadUrl("https://creditcardapp.bankcomm.com/applynew/front/apply/track/record.html?trackCode=A0717103825971");
 //        mLoanWebView.loadUrl("https://taishanopen.oss-cn-hangzhou.aliyuncs.com/H5/index.html");
         mLoanWebView.loadUrl(OtherConstant.LOAN_URL);
     }
@@ -98,6 +108,14 @@ public class LoanWebActivity extends LoanBaseActivity implements MyWebClient.Int
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     @Override
@@ -178,6 +196,11 @@ public class LoanWebActivity extends LoanBaseActivity implements MyWebClient.Int
         return isRootView;
     }
 
+    @Override
+    public void showLog(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * 改变右上角按钮
      * */
@@ -196,6 +219,20 @@ public class LoanWebActivity extends LoanBaseActivity implements MyWebClient.Int
             finish();
         }else {
             mLoanWebView.goBack();
+        }
+    }
+
+    /**
+     * 订阅发送userinfo
+     *
+     * @param newAccountEventBus
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiveEvent(NewAccountEventBus newAccountEventBus) {
+        try {
+            getUserInfo();
+        } catch (Exception e) {
+
         }
     }
 }

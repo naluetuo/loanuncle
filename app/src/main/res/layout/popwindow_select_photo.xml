@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:gravity="bottom">
+
+    <LinearLayout
+        android:id="@+id/photo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/man"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="男"
+            android:textSize="16sp"
+            android:textColor="@color/login_button"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/genter_selecter"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/darkgray"/>
+
+        <TextView
+            android:id="@+id/woman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="女"
+            android:textSize="16sp"
+            android:textColor="@color/login_button"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/genter_selecter"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/darkgray"/>
+
+    <TextView
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="取消"
+        android:textSize="16sp"
+        android:textColor="@color/login_button"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"/>
+
+</LinearLayout>

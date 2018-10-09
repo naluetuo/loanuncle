@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#FBD22E</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="half_transparent">#80000000</color><!-- 半透明 -->
+
     <color name="tab_checked">#3F51B5</color>
     <color name="tab_unchecked">#757575</color>
 
@@ -17,4 +19,5 @@
     <color name="strip_background">#eeeeee</color>
     <color name="number_background">#999999</color>
     <color name="unrepayment_background">#D2D2D2</color>
+    <color name="darkgray">#EEEEEE</color>
 </resources>

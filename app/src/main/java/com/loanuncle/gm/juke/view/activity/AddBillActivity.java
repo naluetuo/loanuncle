@@ -189,8 +189,28 @@ public class AddBillActivity extends LoanBaseActivity<AddBillContact.presenter> 
         }else if(!ObjectUtil.isNumeric(monthlySupplyStr)){
             ToastUtils.showShort(this,"月供金额输入有误，请重新输入");
             return false;
+        }else if(checkPeriodsCount()){
+            ToastUtils.showShort(this,"当前期数不得大于总期数，请重新输入");
+            return false;
         }else {
             return true;
+        }
+    }
+
+    /**
+     * 检查期数
+     * */
+    private boolean checkPeriodsCount(){
+        String all = String.valueOf(mAllperiodsCount.getText());
+        String current = String.valueOf(mCurrentperiodsCount.getText());
+        String cutAll = all.substring(0,all.length()-1);
+        String cutCurrent = current.substring(0,current.length()-1);
+        int allCount = Integer.parseInt(cutAll);
+        int currentCount = Integer.parseInt(cutCurrent);
+        if(allCount < currentCount){
+            return true;
+        }else {
+            return false;
         }
     }
 

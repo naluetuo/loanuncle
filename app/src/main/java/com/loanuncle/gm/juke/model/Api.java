@@ -2,6 +2,7 @@ package com.loanuncle.gm.juke.model;
 
 
 import com.loanuncle.gm.baselibrary.retrofit.BaseApiImpl;
+import com.loanuncle.gm.juke.constant.WebConstance;
 
 /**
  * created by GM in 2018.8.20
@@ -9,7 +10,7 @@ import com.loanuncle.gm.baselibrary.retrofit.BaseApiImpl;
  * */
 public class Api extends BaseApiImpl {
 
-    private static Api api = new Api(RetrofitService.BASE_URL);
+    private static Api api = new Api(WebConstance.BASE_URL);
 
     public Api(String baseUrl) {
         super(baseUrl);

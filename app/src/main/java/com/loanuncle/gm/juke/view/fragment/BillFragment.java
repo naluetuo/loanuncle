@@ -29,6 +29,7 @@ import com.loanuncle.gm.juke.constant.ResponseCodeConstant;
 import com.loanuncle.gm.juke.constant.UserConstant;
 import com.loanuncle.gm.juke.contact.BillContact;
 import com.loanuncle.gm.juke.eventbus.AddBillEventBus;
+import com.loanuncle.gm.juke.eventbus.ChangeButtonEventBus;
 import com.loanuncle.gm.juke.presenter.BillListPresenter;
 import com.loanuncle.gm.juke.util.ToastUtils;
 import com.loanuncle.gm.juke.view.CommonDialog;
@@ -61,6 +62,7 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
     private CommonDialog mCommonDialog;
 
     private RelativeLayout mBlankLayout;
+    private RelativeLayout mListLayout;
     private TextView addBillTxt;
     private TextView addBillBtn;
 
@@ -86,7 +88,7 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
         if(!EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().register(this);
         }
-
+        EventBus.getDefault().post(new ChangeButtonEventBus(1));
         initToolBar(view);
         requestBillList(1, OtherConstant.LIST_SIZE);
     }
@@ -99,14 +101,29 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
         mLoanBillList = view.findViewById(R.id.loanbill_List);
         refreshLayout = view.findViewById(R.id.refresh);
         mBlankLayout = view.findViewById(R.id.blank_layout);
+        mListLayout = view.findViewById(R.id.list_layout);
         addBillTxt = view.findViewById(R.id.add_bill_txt);
         addBillBtn = view.findViewById(R.id.add_bill_btn);
 
         mBillList = new ArrayList<>();
         mLoanBillList.setLayoutManager(new LinearLayoutManager(getContext()));
         itemRemoveAdapter = new ItemRemoveAdapter(mContext,mBillList,this);
+
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        View footerView = View.inflate(mContext, R.layout.footer, null);
+        footerView.setLayoutParams(params);
+        footerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, AddBillActivity.class);
+                startActivity(intent);
+            }
+        });
+        mLoanBillList.addFooterView(footerView);
+
         mLoanBillList.setAdapter(itemRemoveAdapter);
         mLoanBillList.setOnItemClickListener(this);
+
         addBillTxt.setOnClickListener(this);
         addBillBtn.setOnClickListener(this);
 
@@ -240,14 +257,18 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
      * */
     private void changeBackground(){
         boolean isShow = true;
-        if(mBillList == null || mBillList.size() < 1){
+        if(mBillList == null){
             isShow = false;
+        }else{
+            if(mBillList.size() == 0){
+                isShow = false;
+            }
         }
         if(isShow){
-            refreshLayout.setVisibility(View.VISIBLE);
+            mListLayout.setVisibility(View.VISIBLE);
             mBlankLayout.setVisibility(View.GONE);
         }else {
-            refreshLayout.setVisibility(View.GONE);
+            mListLayout.setVisibility(View.GONE);
             mBlankLayout.setVisibility(View.VISIBLE);
         }
     }
@@ -257,6 +278,7 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
      * */
     private void refreshList(){
         mBillList.clear();
+        mLoanBillList.getAdapter().notifyDataSetChanged();
         requestBillList(1, OtherConstant.LIST_SIZE);
     }
 
@@ -265,7 +287,7 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
         String code = getBillListResponseBean.getReturnCode();
         if(ResponseCodeConstant.CODE_200.equals(code)){
             mBillList.addAll(getBillListResponseBean.getResult().getBillList());
-            itemRemoveAdapter.notifyDataSetChanged();
+            mLoanBillList.getAdapter().notifyDataSetChanged();
         }else if(ResponseCodeConstant.CODE_401.equals(code)){
             overallLogout();
         }else if(ResponseCodeConstant.CODE_402.equals(code)){
@@ -282,7 +304,7 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
         String code = deleteBillResponseBean.getReturnCode();
         if(ResponseCodeConstant.CODE_200.equals(code)){
             mBillList.remove(mDeletePosition);
-            itemRemoveAdapter.notifyDataSetChanged();
+            mLoanBillList.getAdapter().notifyDataSetChanged();
             ToastUtils.showShort(mContext,"删除成功");
         }else if(ResponseCodeConstant.CODE_401.equals(code)){
             overallLogout();
@@ -327,6 +349,7 @@ public class BillFragment extends LoanBaseFragment<BillContact.presenter> implem
     @Override
     public void getNewUserInfoResponse(GetNewUserResponseBean getNewUserResponseBean) {
         super.getNewUserInfoResponse(getNewUserResponseBean);
-        refreshList();
+//        refreshList();
     }
+
 }

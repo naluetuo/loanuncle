@@ -6,6 +6,11 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:name="com.loanuncle.gm.juke.LoanApp"
         android:allowBackup="true"
@@ -13,6 +18,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:value="5bbb0e28f1f55651bf0001cf"
+            android:name="UMENG_APPKEY"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
 
         <activity
             android:name="com.loanuncle.gm.juke.view.activity.SplashActivity">
@@ -56,6 +68,27 @@
         <activity android:name="com.loanuncle.gm.juke.view.activity.AgreementWebActivity"
                   android:configChanges="keyboardHidden|orientation|screenSize"
                   android:windowSoftInputMode="stateHidden"></activity>
+
+        <activity
+            android:name="com.loanuncle.gm.juke.view.activity.AddressChangeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
+
+        <activity
+            android:name="com.loanuncle.gm.juke.view.activity.InformationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
+        </activity>
+
+        <activity
+            android:name="com.loanuncle.gm.juke.view.activity.ChatWebActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
     </application>
 
 </manifest>
